@@ -1,5 +1,5 @@
+import { Trash2 } from 'lucide-react';
 import { useShopContext } from '../contexts/shopContext';
-import { Trash, Trash2 } from 'lucide-react';
 
 export const ItemList = () => {
     const { addItemToCart, items, cart, removeItemFromCart, removeItem } = useShopContext();
