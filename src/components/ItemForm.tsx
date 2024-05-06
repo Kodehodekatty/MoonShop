@@ -35,11 +35,11 @@ export const ItemForm = () => {
                 <input type="text" id="name" {...register('name')} />
             </div>
             <div className="field">
-                <label htmlFor="description">description</label>
+                <label htmlFor="description">Description</label>
                 <input type="text" id="description" {...register('description')} />
             </div>
             <div className="field">
-                <label htmlFor="price">price</label>
+                <label htmlFor="price">Price</label>
                 <input type="number" id="price" {...register('price', { valueAsNumber: true })} />
             </div>
             <button className="submit-button">Submit</button>

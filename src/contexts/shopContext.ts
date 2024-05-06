@@ -3,6 +3,9 @@ import { Item } from '../App';
 
 type ShopContextType = {
     addNewItem: (item: Item) => void;
+    addItemToCart: (id: string) => void;
+    cart: string[];
+    items: Item[];
 };
 
 export const ShopContext = createContext<ShopContextType | null>(null);

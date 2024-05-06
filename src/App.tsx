@@ -2,7 +2,9 @@ import { z } from 'zod';
 import './App.css';
 import { useState } from 'react';
 import { ItemForm } from './components/ItemForm';
+import { useLocalStorage } from '@uidotdev/usehooks';
 import { ShopContext } from './contexts/shopContext';
+import { ItemList } from './components/ItemList';
 
 export const ItemSchema = z.object({
     name: z.string().min(1),
@@ -14,12 +16,15 @@ export const ItemSchema = z.object({
 export type Item = z.infer<typeof ItemSchema>;
 
 function App() {
-    const [items, setItems] = useState<Item[]>([]);
+    const [items, setItems] = useLocalStorage<Item[]>('items', []);
 
     const [cart, setCart] = useState<string[]>([]);
 
     const addItemToCart = (id: string) => {
-        setCart((prev) => [...prev, id]);
+        setCart((prev) => {
+            if (prev.includes(id)) return prev;
+            return [...prev, id];
+        });
     };
 
     const addNewItem = (item: Item) => {
@@ -27,9 +32,10 @@ function App() {
     };
 
     return (
-        <ShopContext.Provider value={{ addNewItem }}>
+        <ShopContext.Provider value={{ addNewItem, addItemToCart, items, cart }}>
             <div className="container">
                 <ItemForm />
+                <ItemList />
             </div>
         </ShopContext.Provider>
     );

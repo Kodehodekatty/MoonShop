@@ -1,3 +1,7 @@
+p {
+    margin: 0;
+}
+
 .item-form {
     display: flex;
     gap: 1rem;
@@ -10,7 +14,18 @@
     }
 }
 
+.item-list {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+        display: flex;
+        gap: 1rem;
+    }
+}
+
 .container {
     display: flex;
     justify-content: center;
+    gap: 1rem;
 }
