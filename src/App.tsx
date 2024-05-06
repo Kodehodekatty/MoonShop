@@ -2,15 +2,16 @@ import { z } from 'zod';
 import './App.css';
 import { useState } from 'react';
 import { ItemForm } from './components/ItemForm';
+import { ShopContext } from './contexts/shopContext';
 
-const ItemSchema = z.object({
+export const ItemSchema = z.object({
     name: z.string().min(1),
     price: z.number().positive(),
     description: z.string().min(1),
     id: z.string().uuid(),
 });
 
-type Item = z.infer<typeof ItemSchema>;
+export type Item = z.infer<typeof ItemSchema>;
 
 function App() {
     const [items, setItems] = useState<Item[]>([]);
@@ -26,9 +27,11 @@ function App() {
     };
 
     return (
-        <div className="container">
-            <ItemForm />
-        </div>
+        <ShopContext.Provider value={{ addNewItem }}>
+            <div className="container">
+                <ItemForm />
+            </div>
+        </ShopContext.Provider>
     );
 }
 
