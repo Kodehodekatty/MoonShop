@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 import { Item } from '../App';
 
 type ShopContextType = {
+    removeItem: (id: string) => void;
     removeItemFromCart: (id: string) => void;
     addNewItem: (item: Item) => void;
     addItemToCart: (id: string) => void;

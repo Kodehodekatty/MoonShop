@@ -5,6 +5,7 @@ import { ItemForm } from './components/ItemForm';
 import { useLocalStorage } from '@uidotdev/usehooks';
 import { ShopContext } from './contexts/shopContext';
 import { ItemList } from './components/ItemList';
+import headerImage from './assets/headerImage.svg';
 
 export const ItemSchema = z.object({
     name: z.string().min(1),
@@ -34,16 +35,29 @@ function App() {
     };
 
     const addNewItem = (item: Item) => {
-        setItems((prev) => [...prev, item]);
+        setItems((prev) => [item, ...prev]);
+    };
+
+    const removeItem = (id: string) => {
+        setItems((prev) => {
+            return prev.filter((item) => item.id !== id);
+        });
     };
 
     return (
         <ShopContext.Provider
-            value={{ addNewItem, addItemToCart, removeItemFromCart, items, cart }}
+            value={{ addNewItem, addItemToCart, removeItemFromCart, items, cart, removeItem }}
         >
             <div className="container">
-                <ItemForm />
-                <ItemList />
+                <img
+                    src={headerImage}
+                    alt=""
+                    style={{ width: '100%', maxHeight: '28rem', objectFit: 'cover' }}
+                />
+                <div className="content-container">
+                    <ItemForm />
+                    <ItemList />
+                </div>
             </div>
         </ShopContext.Provider>
     );

@@ -22,7 +22,7 @@ export const ItemForm = () => {
 
     return (
         <form
-            className="item-form"
+            className="item-form card"
             onSubmit={handleSubmit((data) =>
                 addNewItem({
                     ...data,
