@@ -27,12 +27,20 @@ function App() {
         });
     };
 
+    const removeItemFromCart = (id: string) => {
+        setCart((prev) => {
+            return prev.filter((itemId) => itemId !== id);
+        });
+    };
+
     const addNewItem = (item: Item) => {
         setItems((prev) => [...prev, item]);
     };
 
     return (
-        <ShopContext.Provider value={{ addNewItem, addItemToCart, items, cart }}>
+        <ShopContext.Provider
+            value={{ addNewItem, addItemToCart, removeItemFromCart, items, cart }}
+        >
             <div className="container">
                 <ItemForm />
                 <ItemList />
