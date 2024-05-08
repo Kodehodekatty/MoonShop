@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'MyFont';
+    src:
+        local('MyFont'),
+        url(/src/assets/fonts/Comfortaa-VariableFont_wght.ttf) format('truetype');
+}
+
 p,
 ul,
 h2 {
@@ -20,7 +27,7 @@ body {
     max-height: 20rem;
     gap: 1rem;
     flex-direction: column;
-
+    font-family: 'MyFont';
     .field {
         display: flex;
         flex-direction: column;
@@ -43,6 +50,7 @@ body {
     .submit-button {
         width: max-content;
         padding-inline: 1rem;
+
         border-radius: 0.25rem;
         padding-block: 0.5rem;
         border: none;
@@ -84,11 +92,26 @@ body {
         }
         .delete-button {
             cursor: pointer;
-            &:active {
-                scale: 0.95;
+
+            &:hover {
+                transform: scale(0.9);
             }
         }
     }
+}
+
+.item-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.item-list::-webkit-scrollbar-track {
+    background-color: #0000007d;
+    border-radius: 100px;
+}
+
+.item-list::-webkit-scrollbar-thumb {
+    background-color: #f1dad6ee;
+    border-radius: 100px;
 }
 
 .list-header {
@@ -99,7 +122,7 @@ body {
     color: grey;
     list-style: none;
     border-bottom: 3px solid rgba(128, 128, 128, 0.548);
-
+    font-family: 'MyFont';
     p {
         font-weight: 600;
         text-transform: uppercase;
@@ -145,6 +168,7 @@ body {
     h2 {
         letter-spacing: 0.25rem;
         text-transform: uppercase;
+        font-family: 'MyFont';
         color: grey;
     }
 
