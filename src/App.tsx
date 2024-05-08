@@ -1,16 +1,16 @@
+import { useLocalStorage } from '@uidotdev/usehooks';
+import { useState } from 'react';
 import { z } from 'zod';
 import './App.css';
-import { useState } from 'react';
-import { ItemForm } from './components/ItemForm/ItemForm';
-import { useLocalStorage } from '@uidotdev/usehooks';
-import { ShopContext } from './contexts/shopContext';
-import { ItemList } from './components/ItemList';
 import headerImage from './assets/headerImage.svg';
+import { ItemForm } from './components/ItemForm/ItemForm';
+import { ItemList } from './components/ItemList';
+import { ShopContext } from './contexts/shopContext';
 
 export const ItemSchema = z.object({
     name: z.string().min(1, 'Name is required'),
     price: z.number().positive('Price is required'),
-    description: z.string().min(1, 'Description is required'),
+    description: z.string().min(1, 'Description is required').max(50, 'too long'),
     id: z.string().uuid(),
 });
 

@@ -13,6 +13,11 @@ body {
 
 .item-form {
     display: flex;
+    background-color: #f1dad67d;
+    border: 2px solid white;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    max-height: 20rem;
     gap: 1rem;
     flex-direction: column;
 
@@ -50,20 +55,33 @@ body {
 .item-list {
     list-style: none;
     padding-left: 0;
+    min-height: 5rem;
     max-height: 24rem;
     overflow-y: auto;
 
     li {
         animation: fadein 0.5s ease-in;
         display: grid;
-        grid-template-columns: 15ch 1fr 8ch 20px 20px;
+        grid-template-columns: 13ch 1fr 6ch 20px 20px;
+        grid-template-rows: auto 1fr;
+
+        align-items: center;
         gap: 1rem;
         padding-block: 0.5rem;
         padding-inline: 0.8rem;
+
         &:nth-child(even) {
             background-color: #f1dad67d;
         }
 
+        .ref {
+            font-style: italic;
+            line-height: 2rem;
+        }
+        .description {
+            max-width: 150px;
+            word-wrap: break-word;
+        }
         .delete-button {
             cursor: pointer;
             &:active {
@@ -71,21 +89,29 @@ body {
             }
         }
     }
+}
 
-    .list-header {
+.list-header {
+    display: flex;
+    flex-direction: row;
+    gap: 6rem;
+    min-width: 500px;
+    color: grey;
+    list-style: none;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.548);
+
+    p {
         font-weight: 600;
+        text-transform: uppercase;
     }
 }
 
 .name-para {
     white-space: nowrap;
+    display: flex;
+    flex-direction: column;
     text-overflow: ellipsis;
     overflow: hidden;
-}
-
-.total-price {
-    place-self: end;
-    font-size: 2rem;
 }
 
 .container {
@@ -100,13 +126,13 @@ body {
     display: flex;
     width: 100%;
     gap: 1rem;
-
     justify-content: center;
 }
 
 .card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 1rem;
     border: 1px solid black;
     background-color: white;
@@ -115,7 +141,45 @@ body {
     box-shadow:
         0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    h2 {
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+        color: grey;
+    }
+
+    .item-list-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .number-of-items {
+        font-weight: 600;
+        background-color: rgba(128, 128, 128, 0.445);
+        padding-inline: 1rem;
+        align-self: center;
+        padding-block: 0.25rem;
+        border-radius: 5px;
+
+        color: rgb(0, 0, 0);
+    }
+
+    .total-price {
+        place-self: end;
+
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+    }
+
+    .price-wrapper {
+        display: flex;
+
+        flex-direction: column;
+    }
 }
+
 @keyframes fadein {
     from {
         opacity: 0;
