@@ -71,7 +71,7 @@ body {
         animation: fadein 0.5s ease-in;
         display: grid;
         grid-template-columns: 13ch 1fr 6ch 20px 20px;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: 1fr 1fr;
 
         align-items: center;
         gap: 1rem;
@@ -100,6 +100,21 @@ body {
     }
 }
 
+.list-header {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+
+    color: grey;
+    list-style: none;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.548);
+    font-family: 'MyFont';
+    p {
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
+
 .item-list::-webkit-scrollbar {
     width: 8px;
 }
@@ -114,22 +129,7 @@ body {
     border-radius: 100px;
 }
 
-.list-header {
-    display: flex;
-    flex-direction: row;
-    gap: 6rem;
-    min-width: 500px;
-    color: grey;
-    list-style: none;
-    border-bottom: 3px solid rgba(128, 128, 128, 0.548);
-    font-family: 'MyFont';
-    p {
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-}
-
-.name-para {
+.name-wrapper {
     white-space: nowrap;
     display: flex;
     flex-direction: column;
@@ -147,6 +147,9 @@ body {
 
 .content-container {
     display: flex;
+    @media only screen and (max-width: 550px) {
+        flex-direction: column;
+    }
     width: 100%;
     gap: 1rem;
     justify-content: center;
@@ -155,7 +158,6 @@ body {
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 1rem;
     border: 1px solid black;
     background-color: white;

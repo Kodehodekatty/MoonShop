@@ -2,19 +2,14 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useFormContext } from 'react-hook-form';
 import { Item } from '../../App';
 
-type Props = {
-    label: string;
-    field: keyof Item;
-    placeholder: string;
-};
-export const TextField = ({ field, label, placeholder }: Props) => {
+export const TextArea = () => {
     const { register } = useFormContext<Item>();
     return (
         <div className="field">
-            <label htmlFor={field}>{label}</label>
-            <input type="text" id={field} {...register(field)} placeholder={placeholder} />
+            <label htmlFor="description">Description</label>
+            <textarea rows={4} id="description" {...register('description')} />
             <ErrorMessage
-                name={field}
+                name="description"
                 render={({ message }) => <p className="error-message">{message}</p>}
             />
         </div>

@@ -1,10 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ErrorMessage } from '@hookform/error-message';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Item, ItemSchema } from '../../App';
 import { useShopContext } from '../../contexts/shopContext';
+import { PriceField } from './PriceField';
+import { TextArea } from './TextArea';
 import { TextField } from './TextField';
 
 const defaultValues: Item = {
@@ -19,44 +20,25 @@ export const ItemForm = () => {
         defaultValues,
         resolver: zodResolver(ItemSchema),
     });
-    const { register, handleSubmit } = formMethods;
+    const { register, handleSubmit, reset } = formMethods;
     const { addNewItem } = useShopContext();
+
+    const onSubmit = (data: Item) => {
+        addNewItem({
+            ...data,
+            id: uuidv4(),
+        });
+        reset();
+    };
 
     return (
         <FormProvider {...formMethods}>
-            <form
-                className="item-form"
-                onSubmit={handleSubmit((data) =>
-                    addNewItem({
-                        ...data,
-                        id: uuidv4(),
-                    })
-                )}
-            >
-                <TextField label="Name" field="name" />
-
-                <div className="field">
-                    <label htmlFor="description">Description</label>
-                    <textarea rows={4} id="description" {...register('description')} />
-                    <ErrorMessage
-                        name="description"
-                        render={({ message }) => <p className="error-message">{message}</p>}
-                    />
-                </div>
-                <div className="field">
-                    <label htmlFor="price">Price</label>
-                    <input
-                        type="number"
-                        id="price"
-                        {...register('price', { valueAsNumber: true })}
-                    />
-                    <ErrorMessage
-                        name="price"
-                        render={({ message }) => <p className="error-message">{message}</p>}
-                    />
-                </div>
+            <form className="item-form" onSubmit={handleSubmit(onSubmit)}>
+                <TextField label="Name" field="name" placeholder="name of item" />
+                <TextArea />
+                <PriceField />
                 <button className="submit-button">Submit</button>
             </form>
-        </FormProvider>
+        </FormProvider> 
     );
 };
