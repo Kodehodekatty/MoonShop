@@ -7,7 +7,12 @@ export const TextArea = () => {
     return (
         <div className="field">
             <label htmlFor="description">Description</label>
-            <textarea rows={4} id="description" {...register('description')} />
+            <textarea
+                rows={4}
+                id="description"
+                placeholder="write a short description of the item"
+                {...register('description')}
+            />
             <ErrorMessage
                 name="description"
                 render={({ message }) => <p className="error-message">{message}</p>}
