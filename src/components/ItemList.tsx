@@ -4,6 +4,7 @@ import { useShopContext } from '../contexts/shopContext';
 export const ItemList = () => {
     const { addItemToCart, items, cart, removeItemFromCart, removeItem } = useShopContext();
 
+    // ads the total price
     const total = cart.reduce((acc, cur) => {
         const itemPrice = items.find((item) => item.id === cur)?.price || 0;
         return acc + itemPrice;
@@ -11,20 +12,29 @@ export const ItemList = () => {
 
     return (
         <div className="card">
-            <h2>Item list</h2>
+            <div className="item-list-container">
+                <h2>Item list</h2>{' '}
+                <p className="number-of-items">
+                    ( {!items.length ? 'no items added' : items.length + ' items'} )
+                </p>
+            </div>
+            <div className="list-header">
+                <p>Name</p>
+                <p>Description</p>
+                <p> Price</p>
+            </div>
             <ul className="item-list">
-                <li className="list-header">
-                    <p className="name-para">Name</p>
-                    <p>Description</p>
-                    <p>Price</p>
-                </li>
                 {items.map((item) => {
                     const isChecked = cart.includes(item.id);
                     const onClick = isChecked ? removeItemFromCart : addItemToCart;
+
                     return (
                         <li key={item.id}>
-                            <p className="name-para">{item.name}</p>
-                            <p>{item.description}</p>
+                            <p className="name-para">
+                                {item.name} <p className="ref"> ref:{item.id.slice(15, 20)}</p>
+                            </p>
+
+                            <p className="description">{item.description}</p>
                             <p>{item.price} kr</p>
                             <input
                                 type="checkbox"
@@ -36,7 +46,9 @@ export const ItemList = () => {
                     );
                 })}
             </ul>
-            <p className="total-price"> Total: {total} kr</p>
+            <div className="price-wrapper">
+                <p className="total-price"> Total: {total} kr</p>
+            </div>
         </div>
     );
 };

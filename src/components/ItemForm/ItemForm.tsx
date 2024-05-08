@@ -1,10 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { v4 as uuidv4 } from 'uuid';
 
+import { ErrorMessage } from '@hookform/error-message';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Item, ItemSchema } from '../../App';
 import { useShopContext } from '../../contexts/shopContext';
-import { ErrorMessage } from '@hookform/error-message';
 import { TextField } from './TextField';
 
 const defaultValues: Item = {
@@ -25,7 +25,7 @@ export const ItemForm = () => {
     return (
         <FormProvider {...formMethods}>
             <form
-                className="item-form card"
+                className="item-form"
                 onSubmit={handleSubmit((data) =>
                     addNewItem({
                         ...data,
@@ -34,7 +34,7 @@ export const ItemForm = () => {
                 )}
             >
                 <TextField label="Name" field="name" />
-                <TextField label="Name" field="name" />
+
                 <div className="field">
                     <label htmlFor="description">Description</label>
                     <textarea rows={4} id="description" {...register('description')} />
