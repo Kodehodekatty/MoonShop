@@ -18,21 +18,20 @@ export const ItemList = () => {
                     ( {!items.length ? 'no items added' : items.length + ' items'} )
                 </p>
             </div>
-            <div className="list-header">
-                <p>Name</p>
-                <p>Description</p>
-                <p> Price</p>
-            </div>
+
             <ul className="item-list">
+                <div className="list-header">
+                    <p>name</p> <p>Description</p> <p> Price</p>
+                </div>
                 {items.map((item) => {
                     const isChecked = cart.includes(item.id);
                     const onClick = isChecked ? removeItemFromCart : addItemToCart;
 
                     return (
                         <li key={item.id}>
-                            <p className="name-para">
+                            <div className="name-wrapper">
                                 {item.name} <p className="ref"> ref:{item.id.slice(15, 20)}</p>
-                            </p>
+                            </div>
 
                             <p className="description">{item.description}</p>
                             <p>{item.price} kr</p>
