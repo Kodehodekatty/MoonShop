@@ -4,7 +4,7 @@ import { z } from 'zod';
 import './App.css';
 import headerImage from './assets/headerImage.svg';
 import { ItemForm } from './components/ItemForm/ItemForm';
-import { ItemList } from './components/ItemList';
+import { ItemList } from './components/ItemTable.tsx/ItemList';
 import { ShopContext } from './contexts/shopContext';
 
 export const ItemSchema = z.object({
