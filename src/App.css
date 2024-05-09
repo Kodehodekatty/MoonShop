@@ -1,10 +1,11 @@
+/*fonts*/
 @font-face {
     font-family: 'MyFont';
     src:
         local('MyFont'),
         url(/src/assets/fonts/Comfortaa-VariableFont_wght.ttf) format('truetype');
 }
-
+/*defaults*/
 p,
 ul,
 h2 {
@@ -18,16 +19,21 @@ body {
     font-family: sans-serif;
 }
 
+/*form*/
+
 .item-form {
     display: flex;
     background-color: #f1dad67d;
     border: 2px solid white;
     padding: 2rem;
     border-radius: 0.25rem;
-    max-height: 20rem;
+
     gap: 1rem;
     flex-direction: column;
-    font-family: 'MyFont';
+
+    label {
+        font-family: 'MyFont';
+    }
     .field {
         display: flex;
         flex-direction: column;
@@ -60,83 +66,7 @@ body {
     }
 }
 
-.item-list {
-    list-style: none;
-    padding-left: 0;
-    min-height: 5rem;
-    max-height: 24rem;
-    overflow-y: auto;
-
-    li {
-        animation: fadein 0.5s ease-in;
-        display: grid;
-        grid-template-columns: 13ch 1fr 6ch 20px 20px;
-        grid-template-rows: 1fr 1fr;
-
-        align-items: center;
-        gap: 1rem;
-        padding-block: 0.5rem;
-        padding-inline: 0.8rem;
-
-        &:nth-child(even) {
-            background-color: #f1dad67d;
-        }
-
-        .ref {
-            font-style: italic;
-            line-height: 2rem;
-        }
-        .description {
-            max-width: 150px;
-            word-wrap: break-word;
-        }
-        .delete-button {
-            cursor: pointer;
-
-            &:hover {
-                transform: scale(0.9);
-            }
-        }
-    }
-}
-
-.list-header {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-
-    color: grey;
-    list-style: none;
-    border-bottom: 3px solid rgba(128, 128, 128, 0.548);
-    font-family: 'MyFont';
-    p {
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-}
-
-.item-list::-webkit-scrollbar {
-    width: 8px;
-}
-
-.item-list::-webkit-scrollbar-track {
-    background-color: #0000007d;
-    border-radius: 100px;
-}
-
-.item-list::-webkit-scrollbar-thumb {
-    background-color: #f1dad6ee;
-    border-radius: 100px;
-}
-
-.name-wrapper {
-    white-space: nowrap;
-    display: flex;
-    flex-direction: column;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
+/*main containers*/
 .container {
     display: flex;
     flex-direction: column;
@@ -147,61 +77,203 @@ body {
 
 .content-container {
     display: flex;
-    @media only screen and (max-width: 550px) {
+
+    @media screen and (max-width: 500px) {
         flex-direction: column;
     }
-    width: 100%;
     gap: 1rem;
     justify-content: center;
 }
 
+.item-table-container {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+/* card and table*/
 .card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     gap: 1rem;
-    border: 1px solid black;
+    width: 100%;
     background-color: white;
     padding: 1rem;
     border-radius: 0.5rem;
+    max-height: 300px;
     box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        0 7px 10px -1px rgba(0, 0, 0, 0.1),
+        0 5px 10px -1px rgba(0, 0, 0, 0.06);
 
     h2 {
+        margin-inline: 1rem;
         letter-spacing: 0.25rem;
         text-transform: uppercase;
         font-family: 'MyFont';
         color: grey;
     }
 
-    .item-list-container {
+    thead {
+        position: sticky;
+        top: 0;
+        right: 0;
+        background-color: gray;
+    }
+    .table-placeholder {
+        font-family: MyFont;
+        padding-block: 1rem;
+        margin-inline: 1rem;
+    }
+
+    .table-header {
+        background-color: #f1dad67d;
+        color: rgb(243, 240, 240);
+        text-align: justify;
+        font-family: 'MyFont';
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .table-header th {
+        overflow-wrap: break-word;
+        padding: 0.5rem;
+        border-bottom: 3px solid rgba(128, 128, 128, 0.548);
+    }
+
+    .item-table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .item-table tr:nth-child(even) {
+        background-color: #f1dad67d;
+    }
+
+    .item-table td {
+        overflow-wrap: break-word;
+        padding: 0.5rem;
+    }
+
+    .item-table td:last-child {
+        text-align: end;
+    }
+
+    input {
+        cursor: pointer;
+    }
+
+    tbody {
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* delete button*/
+
+    .action-wrapper {
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .delete-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .delete-button:hover {
+        transform: scale(0.9);
+    }
+
+    /*custom scrollbar */
+
+    .item-table-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .item-table-container::-webkit-scrollbar-track {
+        background-color: #0000007d;
+        border-radius: 100px;
+    }
+
+    .item-table-container::-webkit-scrollbar-thumb {
+        background-color: #f1dad6ee;
+        border-radius: 100px;
+    }
+
+    /*displays the number of items currently added */
+
+    .number-of-items-container {
+        display: flex;
+
+        flex-direction: row;
+        border-radius: 0.3rem;
+        align-items: center;
         justify-content: space-between;
     }
 
     .number-of-items {
-        font-weight: 600;
-        background-color: rgba(128, 128, 128, 0.445);
-        padding-inline: 1rem;
-        align-self: center;
-        padding-block: 0.25rem;
-        border-radius: 5px;
+        background-color: rgb(248, 238, 238);
+        gap: 1rem;
+        display: flex;
+        font-family: MyFont;
+        flex-direction: row;
+        align-items: center;
+        line-height: 1.5;
+        padding: 6px 10px;
+        box-shadow:
+            1px 0.5px 1px rgba(0, 0, 0, 0.1),
+            inset 1px 0.5px 0.5px rgba(0, 0, 0, 0.5),
+            0px 0px 1px 0.5px rgba(0, 0, 0, 0.12);
 
+        border-radius: 5px;
         color: rgb(0, 0, 0);
+
+        p {
+            width: 100%;
+            color: grey;
+            white-space: nowrap;
+
+            text-transform: uppercase;
+        }
     }
+
+    .remove-all-items-button {
+        background: #e66177;
+        border-radius: 11px;
+
+        color: #fff;
+
+        cursor: pointer;
+
+        border-color: #ffffff;
+        box-shadow: rgb(255, 255, 255) 0 3px 3px inset;
+        display: flex;
+        padding: 0.4em 1em;
+
+        &:active {
+            transform: scale(0.9);
+            box-shadow: 0 3px 15px -2px;
+        }
+        &:hover {
+            background: #df26455d;
+        }
+    }
+
+    /* price*/
 
     .total-price {
         place-self: end;
-
         font-weight: 600;
+        font-family: MyFont;
         text-transform: uppercase;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .price-wrapper {
         display: flex;
-
         flex-direction: column;
     }
 }
