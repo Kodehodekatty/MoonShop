@@ -3,6 +3,7 @@ import { Item } from '../App';
 
 type ShopContextType = {
     removeItem: (id: string) => void;
+    clearCart: () => void;
     removeItemFromCart: (id: string) => void;
     addNewItem: (item: Item) => void;
     addItemToCart: (id: string) => void;
