@@ -1,10 +1,11 @@
+/*fonts*/
 @font-face {
     font-family: 'MyFont';
     src:
         local('MyFont'),
         url(/src/assets/fonts/Comfortaa-VariableFont_wght.ttf) format('truetype');
 }
-
+/*defaults*/
 p,
 ul,
 h2 {
@@ -18,6 +19,8 @@ body {
     font-family: sans-serif;
 }
 
+/*form*/
+
 .item-form {
     display: flex;
     background-color: #f1dad67d;
@@ -27,7 +30,10 @@ body {
     max-height: 20rem;
     gap: 1rem;
     flex-direction: column;
-    font-family: 'MyFont';
+
+    label {
+        font-family: 'MyFont';
+    }
     .field {
         display: flex;
         flex-direction: column;
@@ -60,83 +66,7 @@ body {
     }
 }
 
-.item-list {
-    list-style: none;
-    padding-left: 0;
-    min-height: 5rem;
-    max-height: 24rem;
-    overflow-y: auto;
-
-    li {
-        animation: fadein 0.5s ease-in;
-        display: grid;
-        grid-template-columns: 13ch 1fr 6ch 20px 20px;
-        grid-template-rows: 1fr 1fr;
-
-        align-items: center;
-        gap: 1rem;
-        padding-block: 0.5rem;
-        padding-inline: 0.8rem;
-
-        &:nth-child(even) {
-            background-color: #f1dad67d;
-        }
-
-        .ref {
-            font-style: italic;
-            line-height: 2rem;
-        }
-        .description {
-            max-width: 150px;
-            word-wrap: break-word;
-        }
-        .delete-button {
-            cursor: pointer;
-
-            &:hover {
-                transform: scale(0.9);
-            }
-        }
-    }
-}
-
-.list-header {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-
-    color: grey;
-    list-style: none;
-    border-bottom: 3px solid rgba(128, 128, 128, 0.548);
-    font-family: 'MyFont';
-    p {
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-}
-
-.item-list::-webkit-scrollbar {
-    width: 8px;
-}
-
-.item-list::-webkit-scrollbar-track {
-    background-color: #0000007d;
-    border-radius: 100px;
-}
-
-.item-list::-webkit-scrollbar-thumb {
-    background-color: #f1dad6ee;
-    border-radius: 100px;
-}
-
-.name-wrapper {
-    white-space: nowrap;
-    display: flex;
-    flex-direction: column;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
+/*main containers*/
 .container {
     display: flex;
     flex-direction: column;
@@ -147,7 +77,7 @@ body {
 
 .content-container {
     display: flex;
-    @media only screen and (max-width: 550px) {
+    @media screen and (max-width: 500px) {
         flex-direction: column;
     }
     width: 100%;
@@ -155,17 +85,17 @@ body {
     justify-content: center;
 }
 
+/* card and table*/
 .card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     gap: 1rem;
-    border: 1px solid black;
     background-color: white;
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        0 7px 10px -1px rgba(0, 0, 0, 0.1),
+        0 5px 10px -1px rgba(0, 0, 0, 0.06);
 
     h2 {
         letter-spacing: 0.25rem;
@@ -173,8 +103,78 @@ body {
         font-family: 'MyFont';
         color: grey;
     }
+    table {
+        max-height: 300px;
 
-    .item-list-container {
+        overflow: auto;
+    }
+
+    tbody {
+        max-height: 500px;
+        overflow-y: auto;
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .table-placeholder {
+        font-family: MyFont;
+        padding-block: 1rem;
+    }
+
+    .item-table {
+        border-collapse: collapse;
+        padding: 1rem;
+
+        width: 100%;
+    }
+    .table-header {
+        background-color: #f1dad67d;
+        color: grey;
+        text-align: justify;
+        table-layout: fixed;
+        font-family: 'MyFont';
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .table-header th {
+        padding: 0.5rem;
+        border-bottom: 3px solid rgba(128, 128, 128, 0.548);
+    }
+
+    .item-table tr:nth-child(even) {
+        background-color: #f1dad67d;
+    }
+
+    .item-table td {
+        padding: 0.5rem;
+    }
+
+    .delete-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .delete-button:hover {
+        transform: scale(0.9);
+    }
+
+    .item-table::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .item-table::-webkit-scrollbar-track {
+        background-color: #0000007d;
+        border-radius: 100px;
+    }
+
+    .item-table::-webkit-scrollbar-thumb {
+        background-color: #f1dad6ee;
+        border-radius: 100px;
+    }
+    .item-table-container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -187,21 +187,22 @@ body {
         align-self: center;
         padding-block: 0.25rem;
         border-radius: 5px;
-
         color: rgb(0, 0, 0);
     }
 
+    /* price*/
+
     .total-price {
         place-self: end;
-
         font-weight: 600;
+        font-family: MyFont;
         text-transform: uppercase;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .price-wrapper {
         display: flex;
-
+        grid-row: 5/5;
         flex-direction: column;
     }
 }
