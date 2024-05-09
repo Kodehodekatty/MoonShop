@@ -34,6 +34,10 @@ function App() {
         });
     };
 
+    const clearCart = () => {
+        setItems([]);
+    };
+
     const addNewItem = (item: Item) => {
         setItems((prev) => [item, ...prev]);
     };
@@ -46,10 +50,19 @@ function App() {
 
     return (
         <ShopContext.Provider
-            value={{ addNewItem, addItemToCart, removeItemFromCart, items, cart, removeItem }}
+            value={{
+                addNewItem,
+                addItemToCart,
+                removeItemFromCart,
+                items,
+                cart,
+                removeItem,
+                clearCart,
+            }}
         >
             <div className="container">
                 <img
+                    className="img-header"
                     src={headerImage}
                     alt=""
                     style={{ width: '100%', maxHeight: '28rem', objectFit: 'cover' }}
