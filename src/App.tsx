@@ -1,11 +1,10 @@
-import { useLocalStorage } from '@uidotdev/usehooks';
-import { useState } from 'react';
 import { z } from 'zod';
 import './App.css';
 import headerImage from './assets/headerImage.svg';
 import { ItemForm } from './components/ItemForm/ItemForm';
 import { ItemList } from './components/ItemTable.tsx/ItemList';
 import { ShopContext } from './contexts/shopContext';
+import { useShop } from './hooks/useShop';
 
 export const ItemSchema = z.object({
     name: z.string().min(1, 'Name is required'),
@@ -18,72 +17,12 @@ export const ItemSchema = z.object({
 export type Item = z.infer<typeof ItemSchema>;
 
 function App() {
-    const [items, setItems] = useLocalStorage<Item[]>('items', []);
-
-    const [cart, setCart] = useState<string[]>([]);
-
-    const addItemToCart = (id: string) => {
-        setCart((prev) => {
-            if (prev.includes(id)) return prev;
-            return [...prev, id];
-        });
-    };
-    const addAllItemsToCart = () => {
-        if (cart.length === items.length) {
-            removeAllItemsFromCart();
-        } else {
-            items.forEach((item) => {
-                if (!cart.includes(item.id)) {
-                    addItemToCart(item.id);
-                }
-            });
-        }
-    };
-    const removeItemFromCart = (id: string) => {
-        setCart((prev) => {
-            return prev.filter((itemId) => itemId !== id);
-        });
-    };
-
-    const removeAllItemsFromCart = () => {
-        setCart([]);
-    };
-
-    const clearCart = () => {
-        setItems([]);
-    };
-
-    const addNewItem = (item: Item) => {
-        setItems((prev) => [item, ...prev]);
-    };
-
-    const removeItem = (id: string) => {
-        setItems((prev) => {
-            return prev.filter((item) => item.id !== id);
-        });
-    };
+    const shop = useShop();
 
     return (
-        <ShopContext.Provider
-            value={{
-                addNewItem,
-                addItemToCart,
-                removeItemFromCart,
-                items,
-                cart,
-                removeItem,
-                clearCart,
-                addAllItemsToCart,
-                removeAllItemsFromCart,
-            }}
-        >
+        <ShopContext.Provider value={shop}>
             <div className="container">
-                <img
-                    className="img-header"
-                    src={headerImage}
-                    alt=""
-                    style={{ width: '100%', maxHeight: '28rem', objectFit: 'cover' }}
-                />
+                <img className="img-header" src={headerImage} alt="" />
                 <div className="content-container">
                     <ItemForm />
                     <ItemList />
