@@ -13,8 +13,9 @@ export const TableData = ({ item }: Props) => {
         <tr key={item.id}>
             <td>{item.name}</td>
             <td>{item.description}</td>
+            <td>{item.vendor} kr</td>
             <td>{item.price} kr</td>
-            <td>{item.price} kr</td>
+
             <td>
                 <button className="delete-button" onClick={() => removeItem(item.id)}>
                     <Trash2 />
