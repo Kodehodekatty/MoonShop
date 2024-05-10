@@ -10,6 +10,7 @@ import { TextField } from './TextField';
 
 const defaultValues: Item = {
     name: '',
+    vendor: '',
     price: 0,
     description: '',
     id: uuidv4(),
@@ -20,7 +21,7 @@ export const ItemForm = () => {
         defaultValues,
         resolver: zodResolver(ItemSchema),
     });
-    const { register, handleSubmit, reset } = formMethods;
+    const { handleSubmit, reset } = formMethods;
     const { addNewItem } = useShopContext();
 
     const onSubmit = (data: Item) => {
@@ -35,10 +36,11 @@ export const ItemForm = () => {
         <FormProvider {...formMethods}>
             <form className="item-form" onSubmit={handleSubmit(onSubmit)}>
                 <TextField label="Name" field="name" placeholder="name of item" />
+                <TextField label="Vendor" field="vendor" placeholder="name of vendor" />
                 <TextArea />
                 <PriceField />
                 <button className="submit-button">Submit</button>
             </form>
-        </FormProvider> 
+        </FormProvider>
     );
 };
