@@ -1,6 +1,6 @@
 import { useLocalStorage } from '@uidotdev/usehooks';
 import { useState } from 'react';
-import { Item } from '../App';
+import { Item } from '../itemValidator';
 
 export const useShop = () => {
     const [items, setItems] = useLocalStorage<Item[]>('items', []);

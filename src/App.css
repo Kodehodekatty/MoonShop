@@ -8,7 +8,8 @@
 /*defaults and images*/
 p,
 ul,
-h2 {
+h2,
+h1 {
     margin: 0;
 }
 
@@ -41,13 +42,32 @@ body {
         flex-direction: column;
     }
     gap: 1rem;
-    justify-content: center;
 }
 
 .item-table-container {
     height: 100%;
     overflow: auto;
     position: relative;
+}
+
+.header-container {
+    position: relative;
+
+    h1 {
+        position: absolute;
+        top: 50%;
+        color: #f1dad6;
+        right: 50%;
+        letter-spacing: 4px;
+        font-size: 2.5rem;
+        font-family: MyFont;
+        transform: translateX(55%) translateY(-50%);
+        text-shadow:
+            -1px 0 black,
+            0 4px black,
+            1px 0 black,
+            0 -1px black;
+    }
 }
 
 /*form*/
@@ -60,7 +80,6 @@ body {
     border-radius: 0.25rem;
     gap: 1rem;
     flex-direction: column;
-
     label {
         font-family: 'MyFont';
     }
@@ -80,12 +99,14 @@ body {
             outline: none;
             border-radius: 0.25rem;
             padding: 0.25rem;
+
             border: 2px solid #b7aeac;
         }
 
         input:focus {
             border: 2px solid #000000b4;
         }
+
         textarea:focus {
             border: 2px solid #000000b4;
         }
@@ -159,19 +180,20 @@ body {
         padding: 0.5rem;
         border-bottom: 3px solid rgba(128, 128, 128, 0.548);
     }
-    .checked-TR {
+
+    .item-row:has(:checked) {
         background-color: #aad9e650 !important;
         box-shadow:
             rgba(0, 0, 0, 0.12) 0px 1px 3px,
             rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        &:nth-child(even) {
+            background-color: #7ba8bc63 !important;
+            box-shadow:
+                rgba(0, 0, 0, 0.12) 0px 1px 3px,
+                rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        }
     }
 
-    .checked-TR:nth-child(even) {
-        background-color: #7ba8bc63 !important;
-        box-shadow:
-            rgba(0, 0, 0, 0.12) 0px 1px 3px,
-            rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    }
     .item-table {
         border-collapse: collapse;
         width: 100%;
@@ -242,7 +264,6 @@ body {
 
     .number-of-items-container {
         display: flex;
-
         flex-direction: row;
         border-radius: 0.3rem;
         align-items: center;
@@ -256,7 +277,6 @@ body {
         font-family: MyFont;
         flex-direction: row;
         align-items: center;
-        line-height: 1.5;
         padding: 6px 10px;
         box-shadow:
             1px 0.5px 1px rgba(0, 0, 0, 0.1),
@@ -270,7 +290,6 @@ body {
             width: 100%;
             color: grey;
             white-space: nowrap;
-
             text-transform: uppercase;
         }
     }

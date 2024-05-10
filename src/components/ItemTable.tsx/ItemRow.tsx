@@ -10,12 +10,11 @@ export const ItemRow = ({ item }: Props) => {
     const isChecked = cart.includes(item.id);
     const onClick = isChecked ? removeItemFromCart : addItemToCart;
     return (
-        <tr key={item.id} className={isChecked ? 'checked-TR' : ''}>
+        <tr key={item.id} className='item-row'>
             <td>{item.name}</td>
             <td>{item.description}</td>
             <td>{item.vendor} kr</td>
             <td>{item.price} kr</td>
-
             <td>
                 <button className="delete-button" onClick={() => removeItem(item.id)}>
                     <Trash2 />
