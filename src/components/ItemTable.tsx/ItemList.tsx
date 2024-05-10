@@ -4,13 +4,15 @@ import { TableData } from './TableData';
 import { TableHeadData } from './TableHeadData';
 
 export const ItemList = () => {
-    const { items, cart, clearCart } = useShopContext();
+    const { items, cart, clearCart, addItemToCart } = useShopContext();
 
     // ads the total price
     const total = cart.reduce((acc, cur) => {
         const itemPrice = items.find((item) => item.id === cur)?.price || 0;
         return acc + itemPrice;
     }, 0);
+
+ 
 
     return (
         <div className="card">

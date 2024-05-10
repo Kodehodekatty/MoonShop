@@ -1,4 +1,8 @@
+import { useShopContext } from '../../contexts/shopContext';
+
 export const TableHeadData = () => {
+    const { addAllItemsToCart } = useShopContext();
+
     return (
         <tr className="table-header">
             <th>Name</th>
@@ -7,7 +11,10 @@ export const TableHeadData = () => {
             <th>Price</th>
 
             <th>delete</th>
-            <th> checkout</th>
+            <th>
+                {' '}
+                checkout <input type="checkbox" onChange={() => addAllItemsToCart()} />
+            </th>
         </tr>
     );
 };
