@@ -97,10 +97,14 @@ body {
     grid-template-rows: auto 1fr auto;
     gap: 1rem;
     width: 100%;
+    @media screen and (max-width: 500px) {
+        width: fit-content;
+    }
+
     background-color: white;
     padding: 1rem;
     border-radius: 0.5rem;
-    max-height: 300px;
+    max-height: 400px;
     box-shadow:
         0 7px 10px -1px rgba(0, 0, 0, 0.1),
         0 5px 10px -1px rgba(0, 0, 0, 0.06);
@@ -126,7 +130,7 @@ body {
     }
 
     .table-header {
-        background-color: #f1dad67d;
+        background-color: #f1dad6c5;
         color: rgb(243, 240, 240);
         text-align: justify;
         font-family: 'MyFont';
@@ -159,14 +163,17 @@ body {
         text-align: end;
     }
 
-    input {
-        cursor: pointer;
-    }
-
     tbody {
         box-shadow:
             0 4px 6px -1px rgba(0, 0, 0, 0.1),
             0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+        input {
+            cursor: pointer;
+            width: 3em;
+            height: 1.5rem;
+            accent-color: #8ebac6;
+        }
     }
 
     /* delete button*/

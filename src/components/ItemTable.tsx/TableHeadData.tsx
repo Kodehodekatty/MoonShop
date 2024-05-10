@@ -3,7 +3,7 @@ export const TableHeadData = () => {
         <tr className="table-header">
             <th>Name</th>
             <th>Description</th>
-            <th>Producer</th>
+            <th>Vendor</th>
             <th>Price</th>
 
             <th>delete</th>
