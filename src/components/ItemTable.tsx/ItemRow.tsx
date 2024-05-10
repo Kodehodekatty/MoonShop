@@ -1,11 +1,11 @@
 import { Trash2 } from 'lucide-react';
-import { Item } from '../../App';
 import { useShopContext } from '../../contexts/shopContext';
+import { Item } from '../../itemValidator';
 
 type Props = {
     item: Item;
 };
-export const TableData = ({ item }: Props) => {
+export const ItemRow = ({ item }: Props) => {
     const { addItemToCart, cart, removeItemFromCart, removeItem } = useShopContext();
     const isChecked = cart.includes(item.id);
     const onClick = isChecked ? removeItemFromCart : addItemToCart;

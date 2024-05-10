@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { Item } from '../App';
+import { Item } from '../itemValidator';
 
 type ShopContextType = {
     removeItem: (id: string) => void;

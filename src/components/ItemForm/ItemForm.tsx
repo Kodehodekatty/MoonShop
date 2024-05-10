@@ -2,8 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { v4 as uuidv4 } from 'uuid';
 
 import { FormProvider, useForm } from 'react-hook-form';
-import { Item, ItemSchema } from '../../App';
 import { useShopContext } from '../../contexts/shopContext';
+import { Item, ItemSchema } from '../../itemValidator';
 import { PriceField } from './PriceField';
 import { TextArea } from './TextArea';
 import { TextField } from './TextField';
