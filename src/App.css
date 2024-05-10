@@ -136,6 +136,10 @@ body {
         font-family: 'MyFont';
         text-transform: uppercase;
         font-weight: 600;
+
+        input {
+            accent-color: #8ebac6;
+        }
     }
 
     .table-header th {

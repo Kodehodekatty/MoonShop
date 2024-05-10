@@ -28,11 +28,25 @@ function App() {
             return [...prev, id];
         });
     };
-
+    const addAllItemsToCart = () => {
+        if (cart.length === items.length) {
+            removeAllItemsFromCart();
+        } else {
+            items.forEach((item) => {
+                if (!cart.includes(item.id)) {
+                    addItemToCart(item.id);
+                }
+            });
+        }
+    };
     const removeItemFromCart = (id: string) => {
         setCart((prev) => {
             return prev.filter((itemId) => itemId !== id);
         });
+    };
+
+    const removeAllItemsFromCart = () => {
+        setCart([]);
     };
 
     const clearCart = () => {
@@ -59,6 +73,8 @@ function App() {
                 cart,
                 removeItem,
                 clearCart,
+                addAllItemsToCart,
+                removeAllItemsFromCart,
             }}
         >
             <div className="container">
