@@ -10,7 +10,7 @@ export const TableData = ({ item }: Props) => {
     const isChecked = cart.includes(item.id);
     const onClick = isChecked ? removeItemFromCart : addItemToCart;
     return (
-        <tr key={item.id}>
+        <tr key={item.id} className={isChecked ? 'checked-TR' : ''}>
             <td>{item.name}</td>
             <td>{item.description}</td>
             <td>{item.vendor} kr</td>

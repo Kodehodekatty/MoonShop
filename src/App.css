@@ -5,7 +5,7 @@
         local('MyFont'),
         url(/src/assets/fonts/Comfortaa-VariableFont_wght.ttf) format('truetype');
 }
-/*defaults*/
+/*defaults and images*/
 p,
 ul,
 h2 {
@@ -19,51 +19,10 @@ body {
     font-family: sans-serif;
 }
 
-/*form*/
-
-.item-form {
-    display: flex;
-    background-color: #f1dad67d;
-    border: 2px solid white;
-    padding: 2rem;
-    border-radius: 0.25rem;
-
-    gap: 1rem;
-    flex-direction: column;
-
-    label {
-        font-family: 'MyFont';
-    }
-    .field {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-
-        .error-message {
-            color: red;
-            font-size: smaller;
-            font-weight: 600;
-        }
-
-        input,
-        textarea {
-            outline: none;
-            border-radius: 0.25rem;
-            padding: 0.25rem;
-            border: 1px solid black;
-        }
-    }
-    .submit-button {
-        width: max-content;
-        padding-inline: 1rem;
-
-        border-radius: 0.25rem;
-        padding-block: 0.5rem;
-        border: none;
-        box-shadow:
-            0 4px 6px -1px rgba(0, 0, 0, 0.1),
-            0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
+.img-header {
+    width: 100%;
+    object-fit: cover;
+    max-height: 26rem;
 }
 
 /*main containers*/
@@ -91,6 +50,60 @@ body {
     position: relative;
 }
 
+/*form*/
+
+.item-form {
+    display: flex;
+    background-color: #f1dad67d;
+    border: 2px solid white;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    gap: 1rem;
+    flex-direction: column;
+
+    label {
+        font-family: 'MyFont';
+    }
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .error-message {
+            color: red;
+            font-size: smaller;
+            font-weight: 600;
+        }
+
+        input,
+        textarea {
+            outline: none;
+            border-radius: 0.25rem;
+            padding: 0.25rem;
+            border: 2px solid #b7aeac;
+        }
+
+        input:focus {
+            border: 2px solid #000000b4;
+        }
+        textarea:focus {
+            border: 2px solid #000000b4;
+        }
+    }
+
+    .submit-button {
+        width: max-content;
+        padding-inline: 1rem;
+
+        border-radius: 0.25rem;
+        padding-block: 0.5rem;
+        border: none;
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+}
+
 /* card and table*/
 .card {
     display: grid;
@@ -100,7 +113,6 @@ body {
     @media screen and (max-width: 500px) {
         width: fit-content;
     }
-
     background-color: white;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -147,7 +159,19 @@ body {
         padding: 0.5rem;
         border-bottom: 3px solid rgba(128, 128, 128, 0.548);
     }
+    .checked-TR {
+        background-color: #aad9e650 !important;
+        box-shadow:
+            rgba(0, 0, 0, 0.12) 0px 1px 3px,
+            rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    }
 
+    .checked-TR:nth-child(even) {
+        background-color: #7ba8bc63 !important;
+        box-shadow:
+            rgba(0, 0, 0, 0.12) 0px 1px 3px,
+            rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    }
     .item-table {
         border-collapse: collapse;
         width: 100%;
