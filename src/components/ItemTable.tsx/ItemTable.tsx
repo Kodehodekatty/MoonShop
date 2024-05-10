@@ -1,18 +1,16 @@
 import { Trash2 } from 'lucide-react';
 import { useShopContext } from '../../contexts/shopContext';
-import { TableData } from './TableData';
-import { TableHeadData } from './TableHeadData';
+import { ItemHeader } from './ItemHeader';
+import { ItemRow } from './ItemRow';
 
-export const ItemList = () => {
-    const { items, cart, clearCart, addItemToCart } = useShopContext();
+export const ItemTable = () => {
+    const { items, cart, clearCart } = useShopContext();
 
     // ads the total price
     const total = cart.reduce((acc, cur) => {
         const itemPrice = items.find((item) => item.id === cur)?.price || 0;
         return acc + itemPrice;
     }, 0);
-
- 
 
     return (
         <div className="card">
@@ -34,12 +32,12 @@ export const ItemList = () => {
             <div className="item-table-container">
                 <table className="item-table">
                     <thead>
-                        <TableHeadData />
+                        <ItemHeader />
                     </thead>
                     <tbody>
                         {!items.length && <p className="table-placeholder">empty</p>}
                         {items.map((item) => {
-                            return <TableData item={item} />;
+                            return <ItemRow item={item} />;
                         })}
                     </tbody>
                 </table>

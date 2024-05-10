@@ -1,6 +1,6 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { useFormContext } from 'react-hook-form';
-import { Item } from '../../App';
+import { Item } from '../../itemValidator';
 
 type Props = {
     label: string;

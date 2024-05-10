@@ -1,6 +1,6 @@
 import { useShopContext } from '../../contexts/shopContext';
 
-export const TableHeadData = () => {
+export const ItemHeader = () => {
     const { addAllItemsToCart } = useShopContext();
 
     return (
