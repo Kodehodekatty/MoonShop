@@ -9,10 +9,8 @@ export const ItemHeader = () => {
             <th>Description</th>
             <th>Vendor</th>
             <th>Price</th>
-
             <th>delete</th>
             <th>
-                {' '}
                 checkout <input type="checkbox" onChange={() => addAllItemsToCart()} />
             </th>
         </tr>

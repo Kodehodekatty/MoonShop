@@ -11,7 +11,10 @@ function App() {
     return (
         <ShopContext.Provider value={shop}>
             <div className="container">
-                <img className="img-header" src={headerImage} alt="" />
+                <div className="header-container">
+                    <img className="img-header" src={headerImage} alt="" />
+                    <h1>MoonShop</h1>
+                </div>
                 <div className="content-container">
                     <ItemForm />
                     <ItemTable />
