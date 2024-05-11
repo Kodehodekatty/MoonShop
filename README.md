@@ -82,6 +82,11 @@ const formMethods = useForm({
     -   [typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
 -   [Vite](https://vitejs.dev/)
 
+
+##CSS and styling
+ - used normal CSS instead of the requested SCSS. Before, only SCSS could make variables for styling, however, this functionality has been integrated into normal CSS, and thus was not needed, in my opinion.
+
+
 ## Other sources
 - The image was generated using the Midjourney bot [direct link to image ](https://www.midjourney.com/jobs/04387c01-18da-490b-a542-b6e0e56ee27e?index=0)
 - the same image was used for the favicon to the page, but as an SVG file ( `/public/icon.svg`), located in  `/index.html`
