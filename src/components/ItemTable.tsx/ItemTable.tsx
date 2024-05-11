@@ -12,6 +12,8 @@ export const ItemTable = () => {
         return acc + itemPrice;
     }, 0);
 
+    //counts the number of items
+
     const itemCountText = !items.length
         ? 'no items'
         : items.length === 1
