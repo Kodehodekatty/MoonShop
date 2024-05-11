@@ -10,10 +10,10 @@ export const ItemRow = ({ item }: Props) => {
     const isChecked = cart.includes(item.id);
     const onClick = isChecked ? removeItemFromCart : addItemToCart;
     return (
-        <tr key={item.id} className='item-row'>
+        <tr key={item.id} className="item-row">
             <td>{item.name}</td>
             <td>{item.description}</td>
-            <td>{item.vendor} kr</td>
+            <td>{item.vendor} </td>
             <td>{item.price} kr</td>
             <td>
                 <button className="delete-button" onClick={() => removeItem(item.id)}>
