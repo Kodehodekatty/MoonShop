@@ -83,8 +83,8 @@ const formMethods = useForm({
 -   [Vite](https://vitejs.dev/)
 
 
-##CSS and styling
- - used normal CSS instead of the requested SCSS. Before, only SCSS could make variables for styling, however, this functionality has been integrated into normal CSS, and thus was not needed, in my opinion.
+## CSS and styling
+ - used normal CSS instead of the requested SCSS. Before, only SCSS could make variables for styling, however, this functionality has been integrated into normal CSS, and wanted to avoid having unnecessary dependencies, so I decided to stick with normal CSS.
 
 
 ## Other sources
