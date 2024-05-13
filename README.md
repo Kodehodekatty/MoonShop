@@ -87,7 +87,12 @@ const formMethods = useForm({
 
 ## CSS and styling
  - I chose not to use SCSS because I didn't need any of the extra functionality it provides and wanted to avoid having unnecessary dependencies
- 
+ - [Figma file](https://www.figma.com/design/7yp5S4LoMZH7dPJfdkSRwT/Untitled?node-id=1%3A78&t=ykJ5bXTPzycNbYt5-1)
+ - color variables:
+<img src="https://github.com/Kodehodekatty/MoonShop/assets/112854862/5e72a14e-881b-49f5-8a09-a0022c68f89d" width="100%" height="100%" align="center" />
+
+
+
 
 
 ## Other sources
