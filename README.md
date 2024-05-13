@@ -43,6 +43,8 @@ const formMethods = useForm({
 - [@uidotdev/usehooks](https://www.npmjs.com/package/@uidotdev/usehooks)
    -  used for the local storage hook
    -  used to prevent losing data on refresh, for styling of the table
+   -  The reason I used this instead of `window.localstorage`, is to keep all places using the same key updated and synchronized.
+   -  The other reason is to maintain stable references if I have an object in local storage
 - [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers)
    -  used to connect zod to react-hook-form
 - [@hookform/error-message](https://www.npmjs.com/package/@hookform/error-message)
@@ -84,7 +86,8 @@ const formMethods = useForm({
 
 
 ## CSS and styling
- - used normal CSS instead of the requested SCSS. Before, only SCSS could make variables for styling, however, this functionality has been integrated into normal CSS, and wanted to avoid having unnecessary dependencies, so I decided to stick with normal CSS.
+ - I chose not to use SCSS because I didn't need any of the extra functionality it provides and wanted to avoid having unnecessary dependencies
+ 
 
 
 ## Other sources
